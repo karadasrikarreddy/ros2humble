@@ -198,17 +198,17 @@ my_robot_controller_uninstall/fast:
 .PHONY : my_robot_controller_uninstall/fast
 
 #=============================================================================
-# Target rules for targets named drive_node
+# Target rules for targets named map_accumulator_3d
 
 # Build rule for target.
-drive_node: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 drive_node
-.PHONY : drive_node
+map_accumulator_3d: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 map_accumulator_3d
+.PHONY : map_accumulator_3d
 
 # fast build rule for target.
-drive_node/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/drive_node.dir/build.make CMakeFiles/drive_node.dir/build
-.PHONY : drive_node/fast
+map_accumulator_3d/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/map_accumulator_3d.dir/build.make CMakeFiles/map_accumulator_3d.dir/build
+.PHONY : map_accumulator_3d/fast
 
 #=============================================================================
 # Target rules for targets named lidar_listener
@@ -223,29 +223,29 @@ lidar_listener/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lidar_listener.dir/build.make CMakeFiles/lidar_listener.dir/build
 .PHONY : lidar_listener/fast
 
-src/drive_node.o: src/drive_node.cpp.o
-.PHONY : src/drive_node.o
+src/map_accumulator_3d.o: src/map_accumulator_3d.cpp.o
+.PHONY : src/map_accumulator_3d.o
 
 # target to build an object file
-src/drive_node.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/drive_node.dir/build.make CMakeFiles/drive_node.dir/src/drive_node.cpp.o
-.PHONY : src/drive_node.cpp.o
+src/map_accumulator_3d.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/map_accumulator_3d.dir/build.make CMakeFiles/map_accumulator_3d.dir/src/map_accumulator_3d.cpp.o
+.PHONY : src/map_accumulator_3d.cpp.o
 
-src/drive_node.i: src/drive_node.cpp.i
-.PHONY : src/drive_node.i
+src/map_accumulator_3d.i: src/map_accumulator_3d.cpp.i
+.PHONY : src/map_accumulator_3d.i
 
 # target to preprocess a source file
-src/drive_node.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/drive_node.dir/build.make CMakeFiles/drive_node.dir/src/drive_node.cpp.i
-.PHONY : src/drive_node.cpp.i
+src/map_accumulator_3d.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/map_accumulator_3d.dir/build.make CMakeFiles/map_accumulator_3d.dir/src/map_accumulator_3d.cpp.i
+.PHONY : src/map_accumulator_3d.cpp.i
 
-src/drive_node.s: src/drive_node.cpp.s
-.PHONY : src/drive_node.s
+src/map_accumulator_3d.s: src/map_accumulator_3d.cpp.s
+.PHONY : src/map_accumulator_3d.s
 
 # target to generate assembly for a file
-src/drive_node.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/drive_node.dir/build.make CMakeFiles/drive_node.dir/src/drive_node.cpp.s
-.PHONY : src/drive_node.cpp.s
+src/map_accumulator_3d.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/map_accumulator_3d.dir/build.make CMakeFiles/map_accumulator_3d.dir/src/map_accumulator_3d.cpp.s
+.PHONY : src/map_accumulator_3d.cpp.s
 
 src/obstacle_detector_3d.o: src/obstacle_detector_3d.cpp.o
 .PHONY : src/obstacle_detector_3d.o
@@ -286,11 +286,11 @@ help:
 	@echo "... test"
 	@echo "... my_robot_controller_uninstall"
 	@echo "... uninstall"
-	@echo "... drive_node"
 	@echo "... lidar_listener"
-	@echo "... src/drive_node.o"
-	@echo "... src/drive_node.i"
-	@echo "... src/drive_node.s"
+	@echo "... map_accumulator_3d"
+	@echo "... src/map_accumulator_3d.o"
+	@echo "... src/map_accumulator_3d.i"
+	@echo "... src/map_accumulator_3d.s"
 	@echo "... src/obstacle_detector_3d.o"
 	@echo "... src/obstacle_detector_3d.i"
 	@echo "... src/obstacle_detector_3d.s"

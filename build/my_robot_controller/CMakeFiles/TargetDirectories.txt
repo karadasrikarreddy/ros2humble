@@ -1,6 +1,6 @@
 /root/ros2_ws/vs/build/my_robot_controller/CMakeFiles/uninstall.dir
 /root/ros2_ws/vs/build/my_robot_controller/CMakeFiles/my_robot_controller_uninstall.dir
-/root/ros2_ws/vs/build/my_robot_controller/CMakeFiles/drive_node.dir
+/root/ros2_ws/vs/build/my_robot_controller/CMakeFiles/map_accumulator_3d.dir
 /root/ros2_ws/vs/build/my_robot_controller/CMakeFiles/lidar_listener.dir
 /root/ros2_ws/vs/build/my_robot_controller/CMakeFiles/test.dir
 /root/ros2_ws/vs/build/my_robot_controller/CMakeFiles/edit_cache.dir

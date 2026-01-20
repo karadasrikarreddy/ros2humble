@@ -1,1 +1,0 @@
-Invoking command in '/root/ros2_ws/vs/build/my_robot_teleop': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /root/ros2_ws/vs/src/my_robot_teleop -DCMAKE_INSTALL_PREFIX=/root/ros2_ws/vs/install/my_robot_teleop

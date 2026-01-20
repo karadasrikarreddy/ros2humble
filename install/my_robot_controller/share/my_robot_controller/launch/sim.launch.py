@@ -1,18 +1,23 @@
 import os
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
-from launch.actions import ExecuteProcess, IncludeLaunchDescription
+from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.actions import Node
 import xacro
 
 def generate_launch_description():
-    # 1. Path to your URDF (Make sure the package name matches)
-    pkg_path = os.path.join(get_package_share_directory('my_robot_description'))
-    xacro_file = os.path.join(pkg_path, 'urdf', 'robot.urdf')
-    robot_description_raw = xacro.process_file(xacro_file).toxml()
+    # 1. Paths
+    pkg_description = get_package_share_directory('my_robot_description')
+    pkg_controller = get_package_share_directory('my_robot_controller')
+    
+    urdf_file = os.path.join(pkg_description, 'urdf', 'robot.urdf')
+    world_file = os.path.join(pkg_description, 'worlds', 'my_map.world')
 
-    # 2. Robot State Publisher (Publishes the 3D model)
+    # 2. Process URDF
+    robot_description_raw = xacro.process_file(urdf_file).toxml()
+
+    # 3. Robot State Publisher
     node_robot_state_publisher = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
@@ -20,24 +25,14 @@ def generate_launch_description():
         parameters=[{'robot_description': robot_description_raw, 'use_sim_time': True}]
     )
 
-    # 3. Gazebo (Starts the empty world)
-    # Inside your sim.launch.py, update the 'gazebo' section:
-
-    # 1. Get the path to the world file
-    world_file_path = os.path.join(
-        get_package_share_directory('my_robot_description'),
-        'worlds',
-        'my_map.world'
-    )
-
-    # 2. Update the Gazebo include to use this world
+    # 4. Gazebo
     gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(
             get_package_share_directory('gazebo_ros'), 'launch', 'gazebo.launch.py')]),
-        launch_arguments={'world': world_file_path}.items()
+        launch_arguments={'world': world_file}.items()
     )
 
-    # 4. Spawn Entity (Put the robot in the Gazebo world)
+    # 5. Spawn Entity
     spawn_entity = Node(
         package='gazebo_ros',
         executable='spawn_entity.py',
@@ -45,16 +40,29 @@ def generate_launch_description():
         output='screen'
     )
 
-    # 5. Your C++ Drive Node
-   # drive_node = Node(
-    #    package='my_robot_controller',
-     #   executable='drive_node',
-      #  output='screen'
-    #) 
+    # 6. RViz2
+    rviz = Node(
+        package='rviz2',
+        executable='rviz2',
+        name='rviz2',
+        output='screen',
+        parameters=[{'use_sim_time': True}]
+        # Optional: arguments=['-d', rviz_config_path]
+    )
+
+    # 7. Lidar Listener (Safety/AEB Node)
+    # This node monitors 3D points and publishes stop commands to cmd_vel [cite: 11, 16, 19]
+    lidar_safety_node = Node(
+        package='my_robot_controller',
+        executable='lidar_listener',
+        output='screen',
+        parameters=[{'use_sim_time': True}]
+    )
 
     return LaunchDescription([
-        gazebo,
         node_robot_state_publisher,
+        gazebo,
         spawn_entity,
-     #   drive_node
+        rviz,
+        lidar_safety_node
     ])
