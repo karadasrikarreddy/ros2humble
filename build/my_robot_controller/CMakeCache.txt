@@ -1084,6 +1084,9 @@ my_robot_controller_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 my_robot_controller_SOURCE_DIR:STATIC=/root/ros2_ws/vs/src/my_robot_controller
 
+//The directory containing a CMake configuration file for octomap_server.
+octomap_server_DIR:PATH=octomap_server_DIR-NOTFOUND
+
 //The directory containing a CMake configuration file for orocos_kdl.
 orocos_kdl_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/orocos_kdl
 

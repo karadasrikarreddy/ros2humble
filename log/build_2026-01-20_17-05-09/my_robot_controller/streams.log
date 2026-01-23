@@ -1,0 +1,59 @@
+[0.014s] Invoking command in '/root/ros2_ws/vs/build/my_robot_controller': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /root/ros2_ws/vs/build/my_robot_controller -- -j8 -l8
+[0.041s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.148s] -- Found rclcpp: 16.0.15 (/opt/ros/humble/share/rclcpp/cmake)
+[0.182s] -- Found rosidl_generator_c: 3.1.7 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.186s] -- Found rosidl_adapter: 3.1.7 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.194s] -- Found rosidl_generator_cpp: 3.1.7 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.204s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.215s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.244s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.245s] -- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.341s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.391s] -- Found sensor_msgs: 4.9.0 (/opt/ros/humble/share/sensor_msgs/cmake)
+[0.417s] -- Found pcl_conversions: 2.4.5 (/opt/ros/humble/share/pcl_conversions/cmake)
+[0.448s] -- Eigen found (include: /usr/include/eigen3, version: 3.4.0)
+[0.475s] -- FLANN found (include: /usr/include, lib: /usr/lib/x86_64-linux-gnu/libflann_cpp.so)
+[0.813s] -- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+[0.818s] -- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)
+[0.952s] -- Eigen found (include: /usr/include/eigen3, version: 3.4.0)
+[0.958s] -- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+[0.963s] -- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)
+[1.090s] -- Found Qhull version 8.0.2
+[1.220s] -- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+[1.356s] -- Found pcl_ros: 2.4.5 (/opt/ros/humble/share/pcl_ros/cmake)
+[1.370s] -- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)
+[1.372s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[1.444s] -- Found tf2_sensor_msgs: 0.25.16 (/opt/ros/humble/share/tf2_sensor_msgs/cmake)
+[1.448s] -- Found std_srvs: 4.9.0 (/opt/ros/humble/share/std_srvs/cmake)
+[1.541s] -- Configuring done
+[1.605s] -- Generating done
+[1.617s] -- Build files have been written to: /root/ros2_ws/vs/build/my_robot_controller
+[1.647s] [35m[1mConsolidate compiler generated dependencies of target lidar_listener[0m
+[1.648s] [35m[1mConsolidate compiler generated dependencies of target map_accumulator_3d[0m
+[1.661s] [ 50%] Built target lidar_listener
+[1.680s] [100%] Built target map_accumulator_3d
+[1.694s] Invoked command in '/root/ros2_ws/vs/build/my_robot_controller' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /root/ros2_ws/vs/build/my_robot_controller -- -j8 -l8
+[1.696s] Invoking command in '/root/ros2_ws/vs/build/my_robot_controller': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /root/ros2_ws/vs/build/my_robot_controller
+[1.706s] -- Install configuration: ""
+[1.706s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/lib/my_robot_controller/map_accumulator_3d
+[1.706s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/lib/my_robot_controller/lidar_listener
+[1.707s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/launch
+[1.707s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/launch/mapping_3d.launch.py
+[1.707s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/launch/sim.launch.py
+[1.707s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/launch/navigation_3d.launch.py
+[1.707s] -- Installing: /root/ros2_ws/vs/install/my_robot_controller/share/ament_index/resource_index/package_run_dependencies/my_robot_controller
+[1.707s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/ament_index/resource_index/parent_prefix_path/my_robot_controller
+[1.707s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/environment/ament_prefix_path.sh
+[1.707s] -- Installing: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/environment/ament_prefix_path.dsv
+[1.708s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/environment/path.sh
+[1.708s] -- Installing: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/environment/path.dsv
+[1.708s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/local_setup.bash
+[1.708s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/local_setup.sh
+[1.708s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/local_setup.zsh
+[1.708s] -- Installing: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/local_setup.dsv
+[1.708s] -- Installing: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/package.dsv
+[1.709s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/ament_index/resource_index/packages/my_robot_controller
+[1.709s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/cmake/my_robot_controllerConfig.cmake
+[1.709s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/cmake/my_robot_controllerConfig-version.cmake
+[1.709s] -- Installing: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/package.xml
+[1.712s] Invoked command in '/root/ros2_ws/vs/build/my_robot_controller' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /root/ros2_ws/vs/build/my_robot_controller

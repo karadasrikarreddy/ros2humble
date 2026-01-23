@@ -1,0 +1,4 @@
+[0.056s] Invoking command in '/home/srikar/ros2_ws/vs/build/my_robot_teleop': _=/usr/bin/env /usr/bin/cmake --build /home/srikar/ros2_ws/vs/build/my_robot_teleop -- -j8 -l8
+[0.067s] CMake Error: The current CMakeCache.txt directory /home/srikar/ros2_ws/vs/build/my_robot_teleop/CMakeCache.txt is different than the directory /root/ros2_ws/vs/build/my_robot_teleop where CMakeCache.txt was created. This may result in binaries being created in the wrong place. If you are not sure, reedit the CMakeCache.txt
+[0.073s] No such file or directory
+[0.073s] CMake Error: Generator: execution of make failed. Make command was: /usr/bin/gmake -j8 -l8 && 
