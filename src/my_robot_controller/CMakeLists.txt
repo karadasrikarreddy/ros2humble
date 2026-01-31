@@ -56,9 +56,9 @@ ament_target_dependencies(costmap_2d_from_3d rclcpp sensor_msgs nav_msgs pcl_con
 add_executable(a_star_planner src/a_star_planner.cpp)
 ament_target_dependencies(a_star_planner rclcpp nav_msgs geometry_msgs tf2 tf2_ros tf2_geometry_msgs)
 
-# Path Follower (Drives the robot)
-add_executable(path_follower src/path_follower.cpp)
-ament_target_dependencies(path_follower rclcpp nav_msgs geometry_msgs tf2_ros tf2_geometry_msgs)
+# local_planner
+add_executable(local_planner src/local_planner.cpp)
+ament_target_dependencies(local_planner rclcpp nav_msgs sensor_msgs geometry_msgs tf2_ros tf2_geometry_msgs pcl_conversions pcl_ros)
 
 # ==========================================
 # 3. SAFETY & UTILITY NODES
@@ -82,9 +82,9 @@ install(TARGETS
   map_loader_node
   costmap_2d_from_3d
   a_star_planner
-  path_follower
   obstacle_detector_3d
   lidar_listener
+  local_planner
   DESTINATION lib/${PROJECT_NAME}
 )
 

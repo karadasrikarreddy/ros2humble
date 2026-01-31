@@ -117,14 +117,14 @@ def generate_launch_description():
         output='screen'
     )
     # ===============================
-    # Path Follower (The Driver)
+    # Local Planner (Potential Fields)
     # ===============================
-    path_follower = Node(
+    local_planner = Node(
         package='my_robot_controller',
-        executable='path_follower',
+        executable='local_planner',
+        name='local_planner',
         output='screen'
     )
-
     rviz = Node(
         package='rviz2',
         executable='rviz2',
@@ -141,6 +141,6 @@ def generate_launch_description():
         obstacle_detector,
         costmap_2d,
         a_star_planner,
-        path_follower,
+        local_planner,
         rviz
     ])
