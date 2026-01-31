@@ -121,7 +121,9 @@ def generate_launch_description():
     a_star_planner = Node(
         package='my_robot_controller',
         executable='a_star_planner',
-        parameters=[{'use_sim_time': True}],
+        parameters=[
+            config_file,
+            {'use_sim_time': True}],
         output='screen'
     )
     # ===============================
@@ -131,6 +133,9 @@ def generate_launch_description():
         package='my_robot_controller',
         executable='local_planner',
         name='local_planner',
+        parameters=[
+            config_file,
+            {'use_sim_time': True}],
         output='screen'
     )
     # ===============================

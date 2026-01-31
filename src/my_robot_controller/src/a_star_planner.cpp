@@ -7,13 +7,12 @@
 #include <queue>
 #include <cmath>
 #include <unordered_map>
-#include <algorithm> // Required for std::reverse
+#include <algorithm> 
 
-// RENAMED STRUCT TO AVOID COLLISION WITH rclcpp::Node
 struct AStarNode {
     int x, y;
     double g_cost, h_cost;
-    std::shared_ptr<AStarNode> parent; // Renamed type here too
+    std::shared_ptr<AStarNode> parent; 
 
     double f_cost() const { return g_cost + h_cost; }
     
@@ -41,7 +40,8 @@ public:
         // TF Listener (to find robot start position)
         tf_buffer_ = std::make_unique<tf2_ros::Buffer>(this->get_clock());
         tf_listener_ = std::make_shared<tf2_ros::TransformListener>(*tf_buffer_);
-
+	
+	this->declare_parameter("obstacle_threshold", 50);
         RCLCPP_INFO(this->get_logger(), "✅ A* Planner Ready. Waiting for Map & Goal...");
     }
 
@@ -133,7 +133,14 @@ private:
 
                 // Collision Check (Map value > 50 is an obstacle)
                 int index = ny * costmap_.info.width + nx;
-                if (costmap_.data[index] > 50) continue; 
+                if (costmap_.data[index] > 50) //continue;
+			{
+			       // Read the parameter dynamically
+				int threshold = this->get_parameter("obstacle_threshold").as_int();
+
+				// Collision Check
+				if (costmap_.data[index] > threshold) continue;
+			}
 
                 double new_g_cost = current.g_cost + costs[i];
 

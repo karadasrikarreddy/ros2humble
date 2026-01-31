@@ -10,7 +10,8 @@
 #include <pcl/point_types.h>
 #include <pcl/filters/voxel_grid.h>
 #include <pcl/io/pcd_io.h>
-#include <pcl/filters/passthrough.h> // <--- NEW HEADER
+#include <pcl/filters/passthrough.h>
+#include <pcl/filters/crop_box.h> // <--- NEW: For Self-Filtering
 
 class MapAccumulator3D : public rclcpp::Node {
 public:
@@ -27,7 +28,7 @@ public:
             "save_map_3d", std::bind(&MapAccumulator3D::save_map_callback, this, std::placeholders::_1, std::placeholders::_2));
 
         global_cloud_ = std::make_shared<pcl::PointCloud<pcl::PointXYZ>>();
-        RCLCPP_INFO(this->get_logger(), "✅ CLEAN 3D Mapper Ready (Ground Filter Active).");
+        RCLCPP_INFO(this->get_logger(), "✅ 3D Mapper Ready (Body Mask + Ground Filter).");
     }
 
 private:
@@ -52,41 +53,66 @@ private:
     }
 
     void pc_callback(const sensor_msgs::msg::PointCloud2::SharedPtr msg) {
-        geometry_msgs::msg::TransformStamped transform;
-        sensor_msgs::msg::PointCloud2 cloud_out;
+        // 1. Convert ROS msg -> PCL (Local Frame)
+        pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_local(new pcl::PointCloud<pcl::PointXYZ>);
+        pcl::fromROSMsg(*msg, *cloud_local);
+
+        // --- STEP 1: SELF-FILTER (Remove Robot Body) ---
+        // This happens in the sensor frame (livox_frame).
+        // Robot is 0.6m long (x) and 0.4m wide (y).
+        // We define a box slightly larger to catch casters/wheels.
+        // Box: X[-0.35, 0.35], Y[-0.25, 0.25], Z[-1.0, 1.0]
+        pcl::CropBox<pcl::PointXYZ> boxFilter;
+        boxFilter.setInputCloud(cloud_local);
+        // Min Point (Back-Right-Bottom)
+        boxFilter.setMin(Eigen::Vector4f(-0.35, -0.25, -1.0, 1.0));
+        // Max Point (Front-Left-Top)
+        boxFilter.setMax(Eigen::Vector4f(0.35, 0.25, 1.0, 1.0));
+        // Set Negative = TRUE (Remove points INSIDE the box)
+        boxFilter.setNegative(true);
+        
+        pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_local_filtered(new pcl::PointCloud<pcl::PointXYZ>);
+        boxFilter.filter(*cloud_local_filtered);
+        
+        // Convert back to ROS msg to use TF tools
+        sensor_msgs::msg::PointCloud2 msg_local_filtered;
+        pcl::toROSMsg(*cloud_local_filtered, msg_local_filtered);
+        msg_local_filtered.header = msg->header; // Preserve timestamp/frame
+
+        // --- STEP 2: TRANSFORM (Local -> Global/Odom) ---
+        sensor_msgs::msg::PointCloud2 cloud_out_global;
         try {
+            geometry_msgs::msg::TransformStamped transform;
             if (!tf_buffer_->canTransform("odom", msg->header.frame_id, tf2::TimePointZero)) return;
             transform = tf_buffer_->lookupTransform("odom", msg->header.frame_id, tf2::TimePointZero);
-            tf2::doTransform(*msg, cloud_out, transform);
+            tf2::doTransform(msg_local_filtered, cloud_out_global, transform);
         } catch (tf2::TransformException &ex) {
             return;
         }
 
-        pcl::PointCloud<pcl::PointXYZ>::Ptr current_cloud(new pcl::PointCloud<pcl::PointXYZ>);
-        pcl::fromROSMsg(cloud_out, *current_cloud);
+        pcl::PointCloud<pcl::PointXYZ>::Ptr current_global_cloud(new pcl::PointCloud<pcl::PointXYZ>);
+        pcl::fromROSMsg(cloud_out_global, *current_global_cloud);
 
-        // --- NEW: Ground Removal Filter ---
-        // Before adding this data to the map, remove the floor.
+        // --- STEP 3: GROUND FILTER (Remove Floor) ---
         pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_no_ground(new pcl::PointCloud<pcl::PointXYZ>);
         pcl::PassThrough<pcl::PointXYZ> pass;
-        pass.setInputCloud(current_cloud);
+        pass.setInputCloud(current_global_cloud);
         pass.setFilterFieldName("z");
-        
-        // TUNE THIS: 0.05 means "remove everything below 5cm height"
-        pass.setFilterLimits(0.05, 10.0); 
+        pass.setFilterLimits(0.09, 10.0); // Keep Z > 5cm
         pass.filter(*cloud_no_ground);
-        // ----------------------------------
 
+        // --- STEP 4: ACCUMULATE ---
         *global_cloud_ += *cloud_no_ground;
 
-        // Downsample to keep it fast
+        // --- STEP 5: DOWNSAMPLE (Keep map manageable) ---
         pcl::VoxelGrid<pcl::PointXYZ> sor;
         sor.setInputCloud(global_cloud_);
-        sor.setLeafSize(0.05f, 0.05f, 0.05f);
+        sor.setLeafSize(0.05f, 0.05f, 0.05f); // 5cm resolution
         pcl::PointCloud<pcl::PointXYZ>::Ptr filtered_cloud(new pcl::PointCloud<pcl::PointXYZ>);
         sor.filter(*filtered_cloud);
         global_cloud_ = filtered_cloud;
 
+        // Publish Map
         sensor_msgs::msg::PointCloud2 output_msg;
         pcl::toROSMsg(*global_cloud_, output_msg);
         output_msg.header.frame_id = "odom";

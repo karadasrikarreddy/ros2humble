@@ -133,7 +133,7 @@
   <link name="livox_frame">
     <visual>
       <geometry>
-        <cylinder radius="0.05" length="0.04"/>
+        <cylinder radius="0.05" length="0.05"/>
       </geometry>
       <material name="red"/>
     </visual>
@@ -142,7 +142,7 @@
   <joint name="lidar_joint" type="fixed">
     <parent link="base_link"/>
     <child link="livox_frame"/>
-    <origin xyz="0 0 0.12" rpy="0 0 0"/>
+    <origin xyz="0 0 0.13" rpy="0 0 0"/>
   </joint>
 
  <gazebo reference="camera_link">
@@ -225,7 +225,7 @@
  <gazebo reference="livox_frame">
     <sensor name="lidar" type="ray">
       <always_on>true</always_on>
-      <visualize>false</visualize>
+      <visualize>true</visualize>
       <update_rate>10</update_rate>
       <ray>
         <scan>

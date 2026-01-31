@@ -74,7 +74,7 @@ private:
         pcl::toROSMsg(*cloud_filtered, map_msg_);
         map_msg_.header.frame_id = "map";
         
-        RCLCPP_INFO(this->get_logger(), "✅ Map Loaded Successfully! (%lu points)", cloud_filtered->size());
+       // RCLCPP_INFO(this->get_logger(), "✅ Map Loaded Successfully! (%lu points)", cloud_filtered->size());
         return true;
     }
 

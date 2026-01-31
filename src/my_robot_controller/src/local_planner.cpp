@@ -14,8 +14,8 @@ class LocalPlanner : public rclcpp::Node {
 public:
     LocalPlanner() : Node("local_planner") {
         // Tunable Parameters
-        this->declare_parameter("lookahead_dist", 1.0);  // Look 1 meter ahead on path
-        this->declare_parameter("obstacle_weight", 1.5); // How much to fear obstacles
+        this->declare_parameter("lookahead_dist", 0.7);  // Look 1 meter ahead on path
+        this->declare_parameter("obstacle_weight", 1.0); // How much to fear obstacles
         this->declare_parameter("max_speed", 0.5);
 
         // Subscribers
