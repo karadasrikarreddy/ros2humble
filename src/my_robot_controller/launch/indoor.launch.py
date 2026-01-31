@@ -20,6 +20,11 @@ def generate_launch_description():
     urdf_file = os.path.join(pkg_description, 'urdf', 'robot.urdf')
     world_file = os.path.join(pkg_description, 'worlds', 'my_map.world')
     
+    config_file = os.path.join(
+        get_package_share_directory('my_robot_controller'),
+        'config',
+        'safety_params.yaml'
+    )
     # FORCE THE MAP PATH DIRECTLY
     #pcd_file = os.path.join(pkg_description, 'maps', 'my_3d_map.pcd')
 
@@ -99,8 +104,11 @@ def generate_launch_description():
         package='my_robot_controller',
         executable='obstacle_detector_3d',
         name='obstacle_detector_3d',
-        parameters=[{'use_sim_time': True}],
-        output='screen'
+        parameters=[
+            config_file,
+            {'use_sim_time': True}
+            ],
+        output='screen',
     )
 
     costmap_2d = Node(
@@ -125,6 +133,21 @@ def generate_launch_description():
         name='local_planner',
         output='screen'
     )
+    # ===============================
+    # 4. Camera Safety (The Final Guard)
+    # ===============================
+    camera_safety = Node(
+        package='my_robot_vision',
+        executable='camera_safety',
+        name='camera_safety',
+        output='screen'
+    )
+    safety_monitor = Node(
+    package='my_robot_controller',
+    executable='safety_monitor',
+    name='safety_monitor',
+    output='screen'
+    )
     rviz = Node(
         package='rviz2',
         executable='rviz2',
@@ -142,5 +165,7 @@ def generate_launch_description():
         costmap_2d,
         a_star_planner,
         local_planner,
+        camera_safety,
+        safety_monitor,
         rviz
     ])

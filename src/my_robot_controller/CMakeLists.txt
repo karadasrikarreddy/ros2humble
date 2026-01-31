@@ -66,11 +66,14 @@ ament_target_dependencies(local_planner rclcpp nav_msgs sensor_msgs geometry_msg
 
 # Obstacle Detector (Stops robot if too close)
 add_executable(obstacle_detector_3d src/obstacle_detector_3d.cpp)
-ament_target_dependencies(obstacle_detector_3d rclcpp sensor_msgs geometry_msgs pcl_conversions pcl_ros)
+ament_target_dependencies(obstacle_detector_3d rclcpp sensor_msgs geometry_msgs pcl_conversions pcl_ros std_msgs)
 
 # Lidar Listener (Simple check)
 add_executable(lidar_listener src/lidar_listener.cpp)
 ament_target_dependencies(lidar_listener rclcpp sensor_msgs)
+#add_executable
+add_executable(safety_monitor src/safety_monitor.cpp)
+ament_target_dependencies(safety_monitor rclcpp geometry_msgs std_msgs)
 
 # ==========================================
 # 4. INSTALLATION
@@ -85,6 +88,7 @@ install(TARGETS
   obstacle_detector_3d
   lidar_listener
   local_planner
+  safety_monitor
   DESTINATION lib/${PROJECT_NAME}
 )
 

@@ -26,7 +26,7 @@ public:
             "/livox/points", 10, std::bind(&LocalPlanner::lidar_callback, this, std::placeholders::_1));
 
         // Publisher (To Raw, so Safety Node still protects us)
-        pub_vel_ = this->create_publisher<geometry_msgs::msg::Twist>("/cmd_vel_raw", 10);
+        pub_vel_ = this->create_publisher<geometry_msgs::msg::Twist>("/cmd_vel_drive", 10);
 
         tf_buffer_ = std::make_unique<tf2_ros::Buffer>(this->get_clock());
         tf_listener_ = std::make_shared<tf2_ros::TransformListener>(*tf_buffer_);

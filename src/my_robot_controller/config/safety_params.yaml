@@ -1,0 +1,18 @@
+obstacle_detector_3d:
+  ros__parameters:
+    # --- ROBOT DIMENSIONS (Meters) ---
+    # The physical width is 0.4m (half is 0.2m).
+    # We add 0.10m buffer so it doesn't scrape walls.
+    robot_width_half: 0.30
+
+    # Distance from Lidar (center) to Front Bumper.
+    # Physical is 0.3m. We add 0.05m buffer.
+    robot_length_front: 0.35
+
+    # Distance to Back Bumper (negative).
+    robot_length_back: -0.35
+
+    # --- DYNAMIC SAFETY ---
+    # How many seconds ahead should we look?
+    # Higher = Safer but more timid. Lower = Aggressive.
+    reaction_time: 1.0
