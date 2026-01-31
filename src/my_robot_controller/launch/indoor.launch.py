@@ -97,7 +97,8 @@ def generate_launch_description():
     # ===============================
     obstacle_detector = Node(
         package='my_robot_controller',
-        executable='lidar_listener',
+        executable='obstacle_detector_3d',
+        name='obstacle_detector_3d',
         parameters=[{'use_sim_time': True}],
         output='screen'
     )
@@ -113,6 +114,14 @@ def generate_launch_description():
         package='my_robot_controller',
         executable='a_star_planner',
         parameters=[{'use_sim_time': True}],
+        output='screen'
+    )
+    # ===============================
+    # Path Follower (The Driver)
+    # ===============================
+    path_follower = Node(
+        package='my_robot_controller',
+        executable='path_follower',
         output='screen'
     )
 
@@ -132,5 +141,6 @@ def generate_launch_description():
         obstacle_detector,
         costmap_2d,
         a_star_planner,
+        path_follower,
         rviz
     ])

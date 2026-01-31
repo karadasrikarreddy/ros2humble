@@ -22,6 +22,7 @@ find_package(pcl_ros REQUIRED)
 find_package(nav2_msgs REQUIRED)
 find_package(std_srvs REQUIRED) # Needed for map saver service
 find_package(std_srvs REQUIRED)
+find_package(PCL REQUIRED)
 
 include_directories(include)
 
@@ -57,7 +58,7 @@ ament_target_dependencies(a_star_planner rclcpp nav_msgs geometry_msgs tf2 tf2_r
 
 # Path Follower (Drives the robot)
 add_executable(path_follower src/path_follower.cpp)
-ament_target_dependencies(path_follower rclcpp nav_msgs geometry_msgs tf2 tf2_ros tf2_geometry_msgs)
+ament_target_dependencies(path_follower rclcpp nav_msgs geometry_msgs tf2_ros tf2_geometry_msgs)
 
 # ==========================================
 # 3. SAFETY & UTILITY NODES
@@ -65,7 +66,7 @@ ament_target_dependencies(path_follower rclcpp nav_msgs geometry_msgs tf2 tf2_ro
 
 # Obstacle Detector (Stops robot if too close)
 add_executable(obstacle_detector_3d src/obstacle_detector_3d.cpp)
-ament_target_dependencies(obstacle_detector_3d rclcpp sensor_msgs geometry_msgs)
+ament_target_dependencies(obstacle_detector_3d rclcpp sensor_msgs geometry_msgs pcl_conversions pcl_ros)
 
 # Lidar Listener (Simple check)
 add_executable(lidar_listener src/lidar_listener.cpp)

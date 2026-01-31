@@ -1,45 +1,101 @@
 #include <rclcpp/rclcpp.hpp>
 #include <sensor_msgs/msg/point_cloud2.hpp>
 #include <nav_msgs/msg/occupancy_grid.hpp>
-#include <sensor_msgs/point_cloud2_iterator.hpp>
+#include <pcl_conversions/pcl_conversions.h>
+#include <pcl/point_cloud.h>
+#include <pcl/point_types.h>
+#include <pcl/filters/passthrough.h>
 
 class Costmap2DFrom3D : public rclcpp::Node {
 public:
     Costmap2DFrom3D() : Node("costmap_2d_from_3d") {
-        subscription_ = this->create_subscription<sensor_msgs::msg::PointCloud2>(
-            "/global_map_3d", rclcpp::QoS(1).transient_local(), std::bind(&Costmap2DFrom3D::process_cloud, this, std::placeholders::_1));
         
-        publisher_ = this->create_publisher<nav_msgs::msg::OccupancyGrid>("/costmap_2d", rclcpp::QoS(1).transient_local());
+        // 1. Subscribe to the 3D Map (Must match Publisher QoS)
+        rclcpp::QoS map_qos(1);
+        map_qos.transient_local(); // Critical: latches the map even if we start late
+        map_qos.reliable();
+
+        sub_3d_map_ = this->create_subscription<sensor_msgs::msg::PointCloud2>(
+            "/global_map_3d", map_qos, 
+            std::bind(&Costmap2DFrom3D::map_callback, this, std::placeholders::_1));
+
+        // 2. Publish the 2D Costmap
+        rclcpp::QoS grid_qos(1);
+        grid_qos.transient_local();
+        grid_qos.reliable();
+        pub_2d_costmap_ = this->create_publisher<nav_msgs::msg::OccupancyGrid>("/costmap_2d", grid_qos);
+
+        RCLCPP_INFO(this->get_logger(), "✅ Costmap Node Ready. Waiting for /global_map_3d...");
     }
 
 private:
-    void process_cloud(const sensor_msgs::msg::PointCloud2::SharedPtr msg) {
+    void map_callback(const sensor_msgs::msg::PointCloud2::SharedPtr msg) {
+        RCLCPP_INFO(this->get_logger(), "Received 3D Map with %u points. Generating Costmap...", msg->width * msg->height);
+
+        // Convert ROS -> PCL
+        pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
+        pcl::fromROSMsg(*msg, *cloud);
+
+        if (cloud->empty()) return;
+
+        // --- MAP SETTINGS ---
+        double resolution = 0.05; // 5cm per pixel
+        double map_min_x = 1000, map_min_y = 1000, map_max_x = -1000, map_max_y = -1000;
+
+        // 1. Find map bounds
+        for (const auto& pt : cloud->points) {
+            if (pt.x < map_min_x) map_min_x = pt.x;
+            if (pt.y < map_min_y) map_min_y = pt.y;
+            if (pt.x > map_max_x) map_max_x = pt.x;
+            if (pt.y > map_max_y) map_max_y = pt.y;
+        }
+
+        // Add padding
+        map_min_x -= 1.0; map_min_y -= 1.0;
+        map_max_x += 1.0; map_max_y += 1.0;
+
+        int width = std::ceil((map_max_x - map_min_x) / resolution);
+        int height = std::ceil((map_max_y - map_min_y) / resolution);
+
+        // 2. Initialize Grid
         nav_msgs::msg::OccupancyGrid grid;
-        grid.header = msg->header;
-        grid.info.resolution = 0.05; // 5cm
-        grid.info.width = 400;       // 20 meters wide
-        grid.info.height = 400;
-        grid.info.origin.position.x = -10.0; // Center the map
-        grid.info.origin.position.y = -10.0;
+        grid.header.frame_id = "map";
+        grid.header.stamp = this->get_clock()->now();
+        grid.info.resolution = resolution;
+        grid.info.width = width;
+        grid.info.height = height;
+        grid.info.origin.position.x = map_min_x;
+        grid.info.origin.position.y = map_min_y;
+        grid.info.origin.position.z = 0.0;
         grid.info.origin.orientation.w = 1.0;
-        grid.data.assign(grid.info.width * grid.info.height, 0);
+        grid.data.assign(width * height, 0); // Fill with 0 (Free Space)
 
-        sensor_msgs::PointCloud2ConstIterator<float> iter_x(*msg, "x"), iter_y(*msg, "y"), iter_z(*msg, "z");
+        // 3. Mark Obstacles
+        for (const auto& pt : cloud->points) {
+            // Ignore ceiling/floor (Double check, though Mapper usually handles this)
+            if (pt.z < 0.05 || pt.z > 2.0) continue; 
 
-        for (; iter_x != iter_x.end(); ++iter_x, ++iter_y, ++iter_z) {
-            if (*iter_z < 0.1 || *iter_z > 1.5) continue; // Height filter
+            int i = (int)((pt.x - map_min_x) / resolution);
+            int j = (int)((pt.y - map_min_y) / resolution);
 
-            int mx = (*iter_x - grid.info.origin.position.x) / grid.info.resolution;
-            int my = (*iter_y - grid.info.origin.position.y) / grid.info.resolution;
-
-            if (mx >= 0 && mx < (int)grid.info.width && my >= 0 && my < (int)grid.info.height) {
-                grid.data[my * grid.info.width + mx] = 100; // Mark occupied
+            if (i >= 0 && i < width && j >= 0 && j < height) {
+                int index = j * width + i;
+                grid.data[index] = 100; // 100 = LETHAL OBSTACLE
+                
+                // Simple Inflation (Expand obstacle by 1 cell)
+                if (i+1 < width) grid.data[j * width + (i+1)] = 100;
+                if (i-1 >= 0)    grid.data[j * width + (i-1)] = 100;
+                if (j+1 < height) grid.data[(j+1) * width + i] = 100;
+                if (j-1 >= 0)    grid.data[(j-1) * width + i] = 100;
             }
         }
-        publisher_->publish(grid);
+
+        pub_2d_costmap_->publish(grid);
+        RCLCPP_INFO(this->get_logger(), "✅ 2D Costmap Published! (%dx%d)", width, height);
     }
-    rclcpp::Subscription<sensor_msgs::msg::PointCloud2>::SharedPtr subscription_;
-    rclcpp::Publisher<nav_msgs::msg::OccupancyGrid>::SharedPtr publisher_;
+
+    rclcpp::Subscription<sensor_msgs::msg::PointCloud2>::SharedPtr sub_3d_map_;
+    rclcpp::Publisher<nav_msgs::msg::OccupancyGrid>::SharedPtr pub_2d_costmap_;
 };
 
 int main(int argc, char** argv) {

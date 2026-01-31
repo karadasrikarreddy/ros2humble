@@ -4,40 +4,56 @@
 #include <pcl/io/pcd_io.h>
 #include <pcl/point_types.h>
 #include <pcl/filters/passthrough.h>
-#include <std_srvs/srv/trigger.hpp> // Standard "Do it!" service
+#include <std_srvs/srv/trigger.hpp>
+
+using namespace std::chrono_literals;
 
 class Dynamic3DMapManager : public rclcpp::Node {
 public:
     Dynamic3DMapManager() : Node("dynamic_3d_map_manager") {
-        // Parameter for the file path
+        // Declare the parameter
         this->declare_parameter<std::string>("pcd_file_path", "");
 
-        // Publisher (Latched / Transient Local)
+        // QoS: Transient Local is still good practice
         rclcpp::QoS qos_profile(1);
         qos_profile.transient_local();
         qos_profile.reliable();
         publisher_ = this->create_publisher<sensor_msgs::msg::PointCloud2>("/global_map_3d", qos_profile);
 
-        // Service Server: /load_map
+        // Service to force reload
         service_ = this->create_service<std_srvs::srv::Trigger>(
             "load_map", std::bind(&Dynamic3DMapManager::load_map_service, this, std::placeholders::_1, std::placeholders::_2));
 
-        // Attempt to load immediately on startup
-        load_and_publish();
+        // TIMER: Run this logic every 5 seconds
+        // This fixes the "Startup Race Condition" and the "Disappearing Map" issue.
+        timer_ = this->create_wall_timer(
+            5s, std::bind(&Dynamic3DMapManager::timer_callback, this));
+            
+        RCLCPP_INFO(this->get_logger(), "⏳ Map Manager Started. Checking for map every 5s...");
     }
 
 private:
-    // The core logic function
-    bool load_and_publish() {
+    void timer_callback() {
+        // If we already have a map loaded, just re-publish it!
+        // This ensures RViz always finds it.
+        if (!map_msg_.data.empty()) {
+            map_msg_.header.stamp = this->get_clock()->now();
+            publisher_->publish(map_msg_);
+            return;
+        }
+
+        // If no map yet, try to load it
+        load_map_from_file();
+    }
+
+    bool load_map_from_file() {
         std::string pcd_path;
         this->get_parameter("pcd_file_path", pcd_path);
 
         if (pcd_path.empty()) {
-            RCLCPP_WARN(this->get_logger(), "⚠️ No PCD path parameter set. Waiting for service call...");
+            RCLCPP_WARN(this->get_logger(), "⚠️ Waiting for 'pcd_file_path' parameter...");
             return false;
         }
-
-        RCLCPP_INFO(this->get_logger(), "📂 Loading map from: %s", pcd_path.c_str());
 
         pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
         if (pcl::io::loadPCDFile<pcl::PointXYZ>(pcd_path, *cloud) == -1) {
@@ -50,36 +66,39 @@ private:
         pcl::PassThrough<pcl::PointXYZ> pass;
         pass.setInputCloud(cloud);
         pass.setFilterFieldName("z");
-        pass.setFilterLimits(0.05, 5.0); // Remove floor (< 5cm) and ceiling (> 5m)
+        pass.setFilterLimits(0.05, 5.0); 
         pass.filter(*cloud_filtered);
         // ----------------------------------
 
-        // Convert to ROS Message
-        sensor_msgs::msg::PointCloud2 map_msg;
-        pcl::toROSMsg(*cloud_filtered, map_msg);
-        map_msg.header.frame_id = "map";
-        map_msg.header.stamp = this->get_clock()->now();
-
-        publisher_->publish(map_msg);
-        RCLCPP_INFO(this->get_logger(), "✅ Map Published! Points: %lu (Raw: %lu)", cloud_filtered->size(), cloud->size());
+        // Save to member variable so we can re-publish later
+        pcl::toROSMsg(*cloud_filtered, map_msg_);
+        map_msg_.header.frame_id = "map";
+        
+        RCLCPP_INFO(this->get_logger(), "✅ Map Loaded Successfully! (%lu points)", cloud_filtered->size());
         return true;
     }
 
-    // Service Callback
-    void load_map_service(const std::shared_ptr<std_srvs::srv::Trigger::Request> request,
+    // Service just clears the current map forcing the timer to reload it next cycle
+    void load_map_service(const std::shared_ptr<std_srvs::srv::Trigger::Request>,
                           std::shared_ptr<std_srvs::srv::Trigger::Response> response) {
-        (void)request; // Unused
-        if (load_and_publish()) {
+        
+        // Force reload by clearing current data
+        map_msg_.data.clear(); 
+        
+        // Try immediately (optional, or just wait for timer)
+        if (load_map_from_file()) {
             response->success = true;
-            response->message = "Map loaded and published successfully.";
+            response->message = "Map reloaded.";
         } else {
             response->success = false;
-            response->message = "Failed to load map. Check logs/path.";
+            response->message = "Failed to load.";
         }
     }
 
     rclcpp::Publisher<sensor_msgs::msg::PointCloud2>::SharedPtr publisher_;
     rclcpp::Service<std_srvs::srv::Trigger>::SharedPtr service_;
+    rclcpp::TimerBase::SharedPtr timer_;
+    sensor_msgs::msg::PointCloud2 map_msg_; // Store map in memory
 };
 
 int main(int argc, char** argv) {
