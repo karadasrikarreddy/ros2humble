@@ -1,1 +1,0 @@
-Invoking command in '/home/srikar/ros2_ws/vs/build/my_robot_controller': _=/usr/bin/env /usr/bin/cmake --build /home/srikar/ros2_ws/vs/build/my_robot_controller -- -j8 -l8

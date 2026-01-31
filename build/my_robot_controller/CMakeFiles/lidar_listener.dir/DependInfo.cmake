@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/root/ros2_ws/vs/src/my_robot_controller/src/obstacle_detector_3d.cpp" "CMakeFiles/lidar_listener.dir/src/obstacle_detector_3d.cpp.o" "gcc" "CMakeFiles/lidar_listener.dir/src/obstacle_detector_3d.cpp.o.d"
+  "/root/ros2_ws/vs/src/my_robot_controller/src/lidar_listener.cpp" "CMakeFiles/lidar_listener.dir/src/lidar_listener.cpp.o" "gcc" "CMakeFiles/lidar_listener.dir/src/lidar_listener.cpp.o.d"
   )
 
 # Targets to which this target links.

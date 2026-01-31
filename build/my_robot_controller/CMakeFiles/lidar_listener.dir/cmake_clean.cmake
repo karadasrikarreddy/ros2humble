@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/lidar_listener.dir/src/obstacle_detector_3d.cpp.o"
-  "CMakeFiles/lidar_listener.dir/src/obstacle_detector_3d.cpp.o.d"
+  "CMakeFiles/lidar_listener.dir/src/lidar_listener.cpp.o"
+  "CMakeFiles/lidar_listener.dir/src/lidar_listener.cpp.o.d"
   "lidar_listener"
   "lidar_listener.pdb"
 )

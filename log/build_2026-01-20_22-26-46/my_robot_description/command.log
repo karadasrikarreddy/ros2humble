@@ -1,2 +1,0 @@
-Invoking command in '/home/srikar/ros2_ws/vs/build/my_robot_description': _=/usr/bin/env /usr/bin/cmake --build /home/srikar/ros2_ws/vs/build/my_robot_description -- -j8 -l8
-Invoked command in '/home/srikar/ros2_ws/vs/build/my_robot_description' returned '1': _=/usr/bin/env /usr/bin/cmake --build /home/srikar/ros2_ws/vs/build/my_robot_description -- -j8 -l8

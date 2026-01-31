@@ -1,0 +1,18 @@
+[0.011s] Invoking command in '/root/ros2_ws/vs/build/my_robot_controller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /root/ros2_ws/vs/build/my_robot_controller -- -j8 -l8
+[0.094s] [35m[1mConsolidate compiler generated dependencies of target map_accumulator_3d[0m
+[0.097s] [ 12%] Built target obstacle_detector_3d
+[0.100s] [ 25%] Built target lidar_listener
+[0.100s] [ 37%] Built target a_star_planner
+[0.100s] [ 50%] Built target path_follower
+[0.100s] [ 62%] Built target costmap_2d_from_3d
+[0.108s] [ 75%] Built target map_loader_node
+[0.108s] [ 81%] [32mBuilding CXX object CMakeFiles/dynamic_3d_map_manager.dir/src/dynamic_3d_map_manager.cpp.o[0m
+[0.132s] [ 93%] Built target map_accumulator_3d
+[1.506s] [01m[K/root/ros2_ws/vs/src/my_robot_controller/src/dynamic_3d_map_manager.cpp:7:10:[m[K [01;31m[Kfatal error: [m[Kstd_srvs/srv/trigger.hpp: No such file or directory
+[1.506s]     7 | #include [01;31m[K<std_srvs/srv/trigger.hpp>[m[K // Standard "Do it!" service
+[1.506s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[1.506s] compilation terminated.
+[1.527s] gmake[2]: *** [CMakeFiles/dynamic_3d_map_manager.dir/build.make:76: CMakeFiles/dynamic_3d_map_manager.dir/src/dynamic_3d_map_manager.cpp.o] Error 1
+[1.527s] gmake[1]: *** [CMakeFiles/Makefile2:177: CMakeFiles/dynamic_3d_map_manager.dir/all] Error 2
+[1.528s] gmake: *** [Makefile:146: all] Error 2
+[1.530s] Invoked command in '/root/ros2_ws/vs/build/my_robot_controller' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /root/ros2_ws/vs/build/my_robot_controller -- -j8 -l8

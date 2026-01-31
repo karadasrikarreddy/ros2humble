@@ -1,5 +1,6 @@
 /root/ros2_ws/vs/install/my_robot_description/share/my_robot_description/urdf/robot.urdf
 /root/ros2_ws/vs/install/my_robot_description/share/my_robot_description/worlds/my_map.world
+/root/ros2_ws/vs/install/my_robot_description/share/my_robot_description/maps/my_3d_map.pcd
 /root/ros2_ws/vs/install/my_robot_description/share/ament_index/resource_index/package_run_dependencies/my_robot_description
 /root/ros2_ws/vs/install/my_robot_description/share/ament_index/resource_index/parent_prefix_path/my_robot_description
 /root/ros2_ws/vs/install/my_robot_description/share/my_robot_description/environment/ament_prefix_path.sh

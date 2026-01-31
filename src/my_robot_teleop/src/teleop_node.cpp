@@ -72,8 +72,8 @@ public:
             current_angular_ = ramp_velocity(current_angular_, target_angular_, ANG_VEL_STEP_SIZE / 2.0);
 
             auto msg = geometry_msgs::msg::Twist();
-            msg.linear.x = current_linear_;
-            msg.angular.z = current_angular_;
+            msg.linear.x = target_linear_ ;      //current_linear_;
+            msg.angular.z = target_angular_ ;    //current_angular_;
             publisher_->publish(msg);
 
             RCLCPP_INFO(this->get_logger(), "Linear: %.2f | Angular: %.2f", current_linear_, current_angular_);

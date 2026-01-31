@@ -143,7 +143,7 @@
   <joint name="livox_joint" type="fixed">
     <parent link="base_link"/>
     <child link="livox_frame"/>
-    <origin xyz="0.1 0 0.15" rpy="0 0 0"/>
+    <origin xyz="0.1 0 0.20" rpy="0 0 0"/>
   </joint>
 
   <gazebo reference="livox_frame">

@@ -12,6 +12,7 @@ find_package(ament_cmake REQUIRED)
 install(DIRECTORY
   urdf
   worlds
+  maps
   DESTINATION share/${PROJECT_NAME}
 )
 

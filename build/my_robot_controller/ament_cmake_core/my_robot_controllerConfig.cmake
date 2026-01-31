@@ -16,7 +16,7 @@ set(_my_robot_controller_CONFIG_INCLUDED TRUE)
 
 # output package information
 if(NOT my_robot_controller_FIND_QUIETLY)
-  message(STATUS "Found my_robot_controller: 0.0.0 (${my_robot_controller_DIR})")
+  message(STATUS "Found my_robot_controller: 0.0.1 (${my_robot_controller_DIR})")
 endif()
 
 # warn when using a deprecated package

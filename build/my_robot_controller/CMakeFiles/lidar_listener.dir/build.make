@@ -69,28 +69,28 @@ include CMakeFiles/lidar_listener.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/lidar_listener.dir/flags.make
 
-CMakeFiles/lidar_listener.dir/src/obstacle_detector_3d.cpp.o: CMakeFiles/lidar_listener.dir/flags.make
-CMakeFiles/lidar_listener.dir/src/obstacle_detector_3d.cpp.o: /root/ros2_ws/vs/src/my_robot_controller/src/obstacle_detector_3d.cpp
-CMakeFiles/lidar_listener.dir/src/obstacle_detector_3d.cpp.o: CMakeFiles/lidar_listener.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ros2_ws/vs/build/my_robot_controller/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/lidar_listener.dir/src/obstacle_detector_3d.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lidar_listener.dir/src/obstacle_detector_3d.cpp.o -MF CMakeFiles/lidar_listener.dir/src/obstacle_detector_3d.cpp.o.d -o CMakeFiles/lidar_listener.dir/src/obstacle_detector_3d.cpp.o -c /root/ros2_ws/vs/src/my_robot_controller/src/obstacle_detector_3d.cpp
+CMakeFiles/lidar_listener.dir/src/lidar_listener.cpp.o: CMakeFiles/lidar_listener.dir/flags.make
+CMakeFiles/lidar_listener.dir/src/lidar_listener.cpp.o: /root/ros2_ws/vs/src/my_robot_controller/src/lidar_listener.cpp
+CMakeFiles/lidar_listener.dir/src/lidar_listener.cpp.o: CMakeFiles/lidar_listener.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/ros2_ws/vs/build/my_robot_controller/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/lidar_listener.dir/src/lidar_listener.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lidar_listener.dir/src/lidar_listener.cpp.o -MF CMakeFiles/lidar_listener.dir/src/lidar_listener.cpp.o.d -o CMakeFiles/lidar_listener.dir/src/lidar_listener.cpp.o -c /root/ros2_ws/vs/src/my_robot_controller/src/lidar_listener.cpp
 
-CMakeFiles/lidar_listener.dir/src/obstacle_detector_3d.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lidar_listener.dir/src/obstacle_detector_3d.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/ros2_ws/vs/src/my_robot_controller/src/obstacle_detector_3d.cpp > CMakeFiles/lidar_listener.dir/src/obstacle_detector_3d.cpp.i
+CMakeFiles/lidar_listener.dir/src/lidar_listener.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lidar_listener.dir/src/lidar_listener.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/ros2_ws/vs/src/my_robot_controller/src/lidar_listener.cpp > CMakeFiles/lidar_listener.dir/src/lidar_listener.cpp.i
 
-CMakeFiles/lidar_listener.dir/src/obstacle_detector_3d.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lidar_listener.dir/src/obstacle_detector_3d.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/ros2_ws/vs/src/my_robot_controller/src/obstacle_detector_3d.cpp -o CMakeFiles/lidar_listener.dir/src/obstacle_detector_3d.cpp.s
+CMakeFiles/lidar_listener.dir/src/lidar_listener.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lidar_listener.dir/src/lidar_listener.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/ros2_ws/vs/src/my_robot_controller/src/lidar_listener.cpp -o CMakeFiles/lidar_listener.dir/src/lidar_listener.cpp.s
 
 # Object files for target lidar_listener
 lidar_listener_OBJECTS = \
-"CMakeFiles/lidar_listener.dir/src/obstacle_detector_3d.cpp.o"
+"CMakeFiles/lidar_listener.dir/src/lidar_listener.cpp.o"
 
 # External object files for target lidar_listener
 lidar_listener_EXTERNAL_OBJECTS =
 
-lidar_listener: CMakeFiles/lidar_listener.dir/src/obstacle_detector_3d.cpp.o
+lidar_listener: CMakeFiles/lidar_listener.dir/src/lidar_listener.cpp.o
 lidar_listener: CMakeFiles/lidar_listener.dir/build.make
 lidar_listener: /opt/ros/humble/lib/librclcpp.so
 lidar_listener: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_fastrtps_c.so
@@ -98,11 +98,6 @@ lidar_listener: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_fastrtps_
 lidar_listener: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_introspection_c.so
 lidar_listener: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_introspection_cpp.so
 lidar_listener: /opt/ros/humble/lib/libsensor_msgs__rosidl_generator_py.so
-lidar_listener: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_fastrtps_c.so
-lidar_listener: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_introspection_c.so
-lidar_listener: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_fastrtps_cpp.so
-lidar_listener: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_introspection_cpp.so
-lidar_listener: /opt/ros/humble/lib/libgeometry_msgs__rosidl_generator_py.so
 lidar_listener: /opt/ros/humble/lib/liblibstatistics_collector.so
 lidar_listener: /opt/ros/humble/lib/librcl.so
 lidar_listener: /opt/ros/humble/lib/librmw_implementation.so
@@ -136,22 +131,27 @@ lidar_listener: /opt/ros/humble/lib/libstatistics_msgs__rosidl_generator_py.so
 lidar_listener: /opt/ros/humble/lib/libstatistics_msgs__rosidl_typesupport_c.so
 lidar_listener: /opt/ros/humble/lib/libstatistics_msgs__rosidl_generator_c.so
 lidar_listener: /opt/ros/humble/lib/libtracetools.so
+lidar_listener: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_fastrtps_c.so
 lidar_listener: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_fastrtps_c.so
 lidar_listener: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_fastrtps_c.so
 lidar_listener: /opt/ros/humble/lib/librosidl_typesupport_fastrtps_c.so
+lidar_listener: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_fastrtps_cpp.so
 lidar_listener: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_fastrtps_cpp.so
 lidar_listener: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_fastrtps_cpp.so
 lidar_listener: /opt/ros/humble/lib/librosidl_typesupport_fastrtps_cpp.so
 lidar_listener: /opt/ros/humble/lib/libfastcdr.so.1.0.24
 lidar_listener: /opt/ros/humble/lib/librmw.so
+lidar_listener: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_introspection_c.so
 lidar_listener: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_introspection_c.so
 lidar_listener: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_introspection_c.so
+lidar_listener: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_introspection_cpp.so
 lidar_listener: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_introspection_cpp.so
 lidar_listener: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_introspection_cpp.so
 lidar_listener: /opt/ros/humble/lib/librosidl_typesupport_introspection_cpp.so
 lidar_listener: /opt/ros/humble/lib/librosidl_typesupport_introspection_c.so
 lidar_listener: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_c.so
 lidar_listener: /opt/ros/humble/lib/libsensor_msgs__rosidl_generator_c.so
+lidar_listener: /opt/ros/humble/lib/libgeometry_msgs__rosidl_generator_py.so
 lidar_listener: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_c.so
 lidar_listener: /opt/ros/humble/lib/libgeometry_msgs__rosidl_generator_c.so
 lidar_listener: /opt/ros/humble/lib/libstd_msgs__rosidl_generator_py.so

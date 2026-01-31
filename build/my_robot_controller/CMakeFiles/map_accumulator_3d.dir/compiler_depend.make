@@ -2011,8 +2011,12 @@ CMakeFiles/map_accumulator_3d.dir/src/map_accumulator_3d.cpp.o: /root/ros2_ws/vs
   /usr/include/x86_64-linux-gnu/sys/fcntl.h \
   /usr/include/pcl-1.12/pcl/io/lzf.h \
   /usr/include/pcl-1.12/pcl/filters/voxel_grid.h \
-  /usr/include/pcl-1.12/pcl/filters/filter.h
+  /usr/include/pcl-1.12/pcl/filters/filter.h \
+  /usr/include/pcl-1.12/pcl/filters/passthrough.h \
+  /usr/include/pcl-1.12/pcl/filters/filter_indices.h
 
+
+/usr/include/pcl-1.12/pcl/filters/passthrough.h:
 
 /usr/include/x86_64-linux-gnu/bits/mman-map-flags-generic.h:
 
@@ -3127,6 +3131,8 @@ CMakeFiles/map_accumulator_3d.dir/src/map_accumulator_3d.cpp.o: /root/ros2_ws/vs
 /usr/include/boost/fusion/view/filter_view/detail/deref_data_impl.hpp:
 
 /usr/include/boost/preprocessor/list/reverse.hpp:
+
+/usr/include/pcl-1.12/pcl/filters/filter_indices.h:
 
 /usr/include/boost/preprocessor/list/fold_right.hpp:
 
