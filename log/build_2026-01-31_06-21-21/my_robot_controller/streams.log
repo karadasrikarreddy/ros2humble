@@ -1,0 +1,36 @@
+[0.016s] Invoking command in '/root/ros2_ws/vs/build/my_robot_controller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /root/ros2_ws/vs/build/my_robot_controller -- -j8 -l8
+[0.086s] [ 12%] Built target a_star_planner
+[0.091s] [ 25%] Built target path_follower
+[0.094s] [ 37%] Built target dynamic_3d_map_manager
+[0.097s] [ 50%] Built target map_loader_node
+[0.099s] [ 62%] Built target costmap_2d_from_3d
+[0.100s] [ 75%] Built target lidar_listener
+[0.102s] [ 87%] Built target map_accumulator_3d
+[0.102s] [ 93%] [32mBuilding CXX object CMakeFiles/obstacle_detector_3d.dir/src/obstacle_detector_3d.cpp.o[0m
+[4.744s] In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24[m[K,
+[4.744s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40[m[K,
+[4.744s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24[m[K,
+[4.745s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20[m[K,
+[4.745s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25[m[K,
+[4.745s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18[m[K,
+[4.745s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20[m[K,
+[4.745s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37[m[K,
+[4.745s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+[4.745s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+[4.745s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+[4.745s]                  from [01m[K/root/ros2_ws/vs/src/my_robot_controller/src/obstacle_detector_3d.cpp:1[m[K:
+[4.745s] [01m[K/root/ros2_ws/vs/src/my_robot_controller/src/obstacle_detector_3d.cpp:[m[K In member function ‘[01m[Kvoid ObstacleDetector3D::cmd_callback(geometry_msgs::msg::Twist_<std::allocator<void> >::SharedPtr)[m[K’:
+[4.745s] [01m[K/root/ros2_ws/vs/src/my_robot_controller/src/obstacle_detector_3d.cpp:76:13:[m[K [01;31m[Kerror: [m[Kuse of deleted function ‘[01m[Kstd::atomic<_Tp>::atomic(const std::atomic<_Tp>&) [with _Tp = float][m[K’
+[4.745s]    76 |             [01;31m[KRCLCPP_WARN_THROTTLE[m[K(this->get_logger(), *this->get_clock(), 1000,
+[4.745s]       |             [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[4.745s] In file included from [01m[K/usr/include/c++/11/future:41[m[K,
+[4.745s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:18[m[K,
+[4.745s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+[4.745s]                  from [01m[K/root/ros2_ws/vs/src/my_robot_controller/src/obstacle_detector_3d.cpp:1[m[K:
+[4.746s] [01m[K/usr/include/c++/11/atomic:227:7:[m[K [01;36m[Knote: [m[Kdeclared here
+[4.746s]   227 |       [01;36m[Katomic[m[K(const atomic&) = delete;
+[4.746s]       |       [01;36m[K^~~~~~[m[K
+[8.217s] gmake[2]: *** [CMakeFiles/obstacle_detector_3d.dir/build.make:76: CMakeFiles/obstacle_detector_3d.dir/src/obstacle_detector_3d.cpp.o] Error 1
+[8.217s] gmake[1]: *** [CMakeFiles/Makefile2:307: CMakeFiles/obstacle_detector_3d.dir/all] Error 2
+[8.217s] gmake: *** [Makefile:146: all] Error 2
+[8.220s] Invoked command in '/root/ros2_ws/vs/build/my_robot_controller' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /root/ros2_ws/vs/build/my_robot_controller -- -j8 -l8

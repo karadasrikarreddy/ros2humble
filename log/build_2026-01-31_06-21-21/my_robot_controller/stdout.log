@@ -1,0 +1,8 @@
+[ 12%] Built target a_star_planner
+[ 25%] Built target path_follower
+[ 37%] Built target dynamic_3d_map_manager
+[ 50%] Built target map_loader_node
+[ 62%] Built target costmap_2d_from_3d
+[ 75%] Built target lidar_listener
+[ 87%] Built target map_accumulator_3d
+[ 93%] [32mBuilding CXX object CMakeFiles/obstacle_detector_3d.dir/src/obstacle_detector_3d.cpp.o[0m

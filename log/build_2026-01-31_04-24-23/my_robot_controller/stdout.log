@@ -1,0 +1,10 @@
+[35m[1mConsolidate compiler generated dependencies of target costmap_2d_from_3d[0m
+[35m[1mConsolidate compiler generated dependencies of target dynamic_3d_map_manager[0m
+[ 18%] Built target lidar_listener
+[ 18%] [32mBuilding CXX object CMakeFiles/a_star_planner.dir/src/a_star_planner.cpp.o[0m
+[ 31%] Built target path_follower
+[ 43%] Built target obstacle_detector_3d
+[ 56%] Built target map_loader_node
+[ 68%] Built target map_accumulator_3d
+[ 81%] Built target costmap_2d_from_3d
+[ 93%] Built target dynamic_3d_map_manager

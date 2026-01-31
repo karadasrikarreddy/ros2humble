@@ -1,0 +1,65 @@
+[35m[1mConsolidate compiler generated dependencies of target obstacle_detector_3d[0m
+[ 25%] Built target a_star_planner
+[ 25%] Built target path_follower
+[ 37%] Built target dynamic_3d_map_manager
+[ 50%] Built target lidar_listener
+[ 68%] Built target map_loader_node
+[ 75%] Built target costmap_2d_from_3d
+[ 87%] Built target map_accumulator_3d
+[100%] Built target obstacle_detector_3d
+-- Install configuration: ""
+-- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/lib/my_robot_controller/map_accumulator_3d
+-- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/lib/my_robot_controller/dynamic_3d_map_manager
+-- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/lib/my_robot_controller/map_loader_node
+-- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/lib/my_robot_controller/costmap_2d_from_3d
+-- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/lib/my_robot_controller/a_star_planner
+-- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/lib/my_robot_controller/path_follower
+-- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/lib/my_robot_controller/obstacle_detector_3d
+-- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/lib/my_robot_controller/lidar_listener
+-- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/launch
+-- Installing: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/launch/build
+-- Installing: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/launch/build/COLCON_IGNORE
+-- Installing: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/launch/build/.built_by
+-- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/launch/mapping_3d.launch.py
+-- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/launch/sim.launch.py
+-- Installing: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/launch/log
+-- Installing: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/launch/log/COLCON_IGNORE
+-- Installing: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/launch/log/latest
+-- Installing: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/launch/log/build_2026-01-31_05-07-27
+-- Installing: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/launch/log/build_2026-01-31_05-07-27/logger_all.log
+-- Installing: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/launch/log/build_2026-01-31_05-07-27/events.log
+-- Installing: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/launch/log/latest_build
+-- Installing: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/launch/install
+-- Installing: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/launch/install/setup.sh
+-- Installing: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/launch/install/setup.ps1
+-- Installing: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/launch/install/COLCON_IGNORE
+-- Installing: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/launch/install/.colcon_install_layout
+-- Installing: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/launch/install/setup.bash
+-- Installing: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/launch/install/setup.zsh
+-- Installing: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/launch/install/local_setup.ps1
+-- Installing: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/launch/install/_local_setup_util_ps1.py
+-- Installing: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/launch/install/_local_setup_util_sh.py
+-- Installing: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/launch/install/local_setup.zsh
+-- Installing: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/launch/install/local_setup.sh
+-- Installing: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/launch/install/local_setup.bash
+-- Installing: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/launch/indoor.launch.py
+-- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/launch/navigation_3d.launch.py
+-- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/config
+-- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/config/map_config.yaml
+-- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/maps
+-- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/maps/my_3d_map.pcd
+-- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/ament_index/resource_index/package_run_dependencies/my_robot_controller
+-- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/ament_index/resource_index/parent_prefix_path/my_robot_controller
+-- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/environment/ament_prefix_path.sh
+-- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/environment/ament_prefix_path.dsv
+-- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/environment/path.sh
+-- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/environment/path.dsv
+-- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/local_setup.bash
+-- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/local_setup.sh
+-- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/local_setup.zsh
+-- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/local_setup.dsv
+-- Installing: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/package.dsv
+-- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/ament_index/resource_index/packages/my_robot_controller
+-- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/cmake/my_robot_controllerConfig.cmake
+-- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/cmake/my_robot_controllerConfig-version.cmake
+-- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/package.xml

@@ -1,0 +1,46 @@
+[0.010s] Invoking command in '/root/ros2_ws/vs/build/my_robot_controller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /root/ros2_ws/vs/build/my_robot_controller -- -j8 -l8
+[0.068s] [35m[1mConsolidate compiler generated dependencies of target path_follower[0m
+[0.083s] [ 12%] Built target obstacle_detector_3d
+[0.085s] [ 25%] Built target lidar_listener
+[0.085s] [ 37%] Built target a_star_planner
+[0.092s] [ 62%] Built target path_follower
+[0.092s] [ 62%] Built target map_loader_node
+[0.092s] [ 75%] Built target dynamic_3d_map_manager
+[0.095s] [ 87%] Built target costmap_2d_from_3d
+[0.096s] [100%] Built target map_accumulator_3d
+[0.106s] Invoked command in '/root/ros2_ws/vs/build/my_robot_controller' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /root/ros2_ws/vs/build/my_robot_controller -- -j8 -l8
+[0.116s] Invoking command in '/root/ros2_ws/vs/build/my_robot_controller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /root/ros2_ws/vs/build/my_robot_controller
+[0.122s] -- Install configuration: ""
+[0.122s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/lib/my_robot_controller/map_accumulator_3d
+[0.123s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/lib/my_robot_controller/dynamic_3d_map_manager
+[0.123s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/lib/my_robot_controller/map_loader_node
+[0.123s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/lib/my_robot_controller/costmap_2d_from_3d
+[0.123s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/lib/my_robot_controller/a_star_planner
+[0.123s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/lib/my_robot_controller/path_follower
+[0.124s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/lib/my_robot_controller/obstacle_detector_3d
+[0.124s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/lib/my_robot_controller/lidar_listener
+[0.124s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/launch
+[0.124s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/launch/mapping_3d.launch.py
+[0.124s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/launch/sim.launch.py
+[0.124s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/launch/indoor.launch.py
+[0.124s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/launch/navigation_3d.launch.py
+[0.124s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/config
+[0.124s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/config/map_config.yaml
+[0.124s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/maps
+[0.125s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/maps/my_3d_map.pcd
+[0.125s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/ament_index/resource_index/package_run_dependencies/my_robot_controller
+[0.125s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/ament_index/resource_index/parent_prefix_path/my_robot_controller
+[0.125s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/environment/ament_prefix_path.sh
+[0.125s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/environment/ament_prefix_path.dsv
+[0.125s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/environment/path.sh
+[0.125s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/environment/path.dsv
+[0.125s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/local_setup.bash
+[0.125s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/local_setup.sh
+[0.125s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/local_setup.zsh
+[0.125s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/local_setup.dsv
+[0.125s] -- Installing: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/package.dsv
+[0.125s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/ament_index/resource_index/packages/my_robot_controller
+[0.125s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/cmake/my_robot_controllerConfig.cmake
+[0.125s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/cmake/my_robot_controllerConfig-version.cmake
+[0.126s] -- Up-to-date: /root/ros2_ws/vs/install/my_robot_controller/share/my_robot_controller/package.xml
+[0.127s] Invoked command in '/root/ros2_ws/vs/build/my_robot_controller' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /root/ros2_ws/vs/build/my_robot_controller

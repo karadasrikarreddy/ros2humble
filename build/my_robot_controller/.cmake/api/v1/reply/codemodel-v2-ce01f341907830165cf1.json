@@ -1,0 +1,142 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-e4d088833fc77f5e8776.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "my_robot_controller",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "a_star_planner::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-a_star_planner-5671a96677abc0e64fc7.json",
+					"name" : "a_star_planner",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "costmap_2d_from_3d::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-costmap_2d_from_3d-3c9ae841cab6b3737d8f.json",
+					"name" : "costmap_2d_from_3d",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "dynamic_3d_map_manager::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dynamic_3d_map_manager-2e77feeea06975b978be.json",
+					"name" : "dynamic_3d_map_manager",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "lidar_listener::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-lidar_listener-9f6622833445c9355648.json",
+					"name" : "lidar_listener",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "local_planner::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-local_planner-a71cef6c9b70c9c5a542.json",
+					"name" : "local_planner",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "map_accumulator_3d::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-map_accumulator_3d-10e195d81f6dcc7b3c5f.json",
+					"name" : "map_accumulator_3d",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "map_loader_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-map_loader_node-2f663b933f14df125fa4.json",
+					"name" : "map_loader_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "my_robot_controller_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-my_robot_controller_uninstall-b7503d95bbb937620f36.json",
+					"name" : "my_robot_controller_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "obstacle_detector_3d::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-obstacle_detector_3d-9a3b226a21a87e2d6b01.json",
+					"name" : "obstacle_detector_3d",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-a771a9aecdbef8d3bea4.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/root/ros2_ws/vs/build/my_robot_controller",
+		"source" : "/root/ros2_ws/vs/src/my_robot_controller"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}
