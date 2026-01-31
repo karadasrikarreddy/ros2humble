@@ -1,9 +1,0 @@
-[35m[1mConsolidate compiler generated dependencies of target map_accumulator_3d[0m
-[ 12%] Built target obstacle_detector_3d
-[ 25%] Built target lidar_listener
-[ 37%] Built target a_star_planner
-[ 50%] Built target path_follower
-[ 62%] Built target costmap_2d_from_3d
-[ 75%] Built target map_loader_node
-[ 81%] [32mBuilding CXX object CMakeFiles/dynamic_3d_map_manager.dir/src/dynamic_3d_map_manager.cpp.o[0m
-[ 93%] Built target map_accumulator_3d
